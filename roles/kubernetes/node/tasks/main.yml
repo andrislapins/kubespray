@@ -112,7 +112,7 @@
   community.general.modprobe:
     name: "{{ item }}"
     state: present
-    persistent: present
+    # persistent: present
   loop: "{{ kube_proxy_ipvs_modules }}"
   when: kube_proxy_mode == 'ipvs'
   tags:
@@ -122,7 +122,7 @@
   community.general.modprobe:
     name: "{{ item }}"
     state: present
-    persistent: present
+    # persistent: present
   register: modprobe_conntrack_module
   ignore_errors: true  # noqa ignore-errors
   loop: "{{ conntrack_modules }}"
@@ -136,7 +136,7 @@
   community.general.modprobe:
     name: "nf_tables"
     state: present
-    persistent: present
+    # persistent: present
   when: kube_proxy_mode == 'nftables'
   tags:
     - kube-proxy
